@@ -1,13 +1,13 @@
 import { useNavigate } from "react-router-dom";
 
-const Home = () => {
+const HomePage = () => {
     const navigate = useNavigate();
     return (
         <>
             Home Page
-            <button onClick={() => { navigate("/dashboard")}}>Navigate</button>
+            <button onClick={() => { navigate("/dashboard")}}>Dashboard</button>
         </>
     )
 }
 
-export default Home;
+export default HomePage;

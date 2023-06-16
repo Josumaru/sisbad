@@ -1,4 +1,4 @@
-const Dashboard = () => {
+const DashboardPage = () => {
     return (
         <>
             INI DASHBOARD
@@ -6,4 +6,4 @@ const Dashboard = () => {
     )
 }
 
-export default Dashboard;
+export default DashboardPage;
