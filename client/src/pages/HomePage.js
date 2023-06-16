@@ -1,13 +1,8 @@
 import { useNavigate } from "react-router-dom";
+import Home from "../components/Home/Home"
 
 const HomePage = () => {
-    const navigate = useNavigate();
-    return (
-        <>
-            Home Page
-            <button onClick={() => { navigate("/dashboard")}}>Dashboard</button>
-        </>
-    )
+    return <Home/>
 }
 
 export default HomePage;
