@@ -9,15 +9,13 @@ const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
-    useEffect(() => {
-
-    }, [])
     axios.defaults.withCredentials = true;
     const handleSubmit = async (e, email, password) => {
         e.preventDefault();
         const res = await axios.post(`http://localhost:3001/login?email=${email}&password=${password}`)
+        console.log(res.data)
         if (res.data.message === "success") {
-            navigate("/");
+            navigate("/dashboard");
         }
     }
     return (

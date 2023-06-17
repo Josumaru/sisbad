@@ -11,9 +11,11 @@ const RegisterPage = () => {
         axios.post("http://localhost:3001/auth")
             .then((res) => {
                 setAuth(res.data.login)
-                if (auth) return <RegisterPage />
-                navigate("/");
             })
-    }, []) 
+    }, [])
+    useEffect(() => {
+        if (auth) navigate("/dashboard");
+    }, [auth])
+    return <Register />
 }
 export default RegisterPage;

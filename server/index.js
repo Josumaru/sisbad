@@ -67,11 +67,11 @@ server.post("/register", (req, res) => {
 const userAuth = (req, res, next) => {
     const token = req.cookies.token;
     if (!token) {
-        return res.json({ login: false,message: "login first" })
+        return res.json({ login : false, message: "login first" })
     } else {
         jwt.verify(token, "secret", (err, decoded) => {
             if (err) {
-                return res.json({ login: false, message: "error authentication" })
+                return res.json({login: false, message: "error authentication" })
             } else {
                 req.email = decoded.email;
                 next();
