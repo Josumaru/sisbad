@@ -7,12 +7,12 @@ const DashboardPage = () => {
     const [auth, setAuth] = useState(false);
     axios.defaults.withCredentials = true;
     useEffect(() => {
-        axios.post("http://localhost:3001/dashboard")
+        axios.post("http://localhost:3001/auth")
             .then((res) => {
                 setAuth(res.data.login)
             })
     }, [])
-    return auth ? <Dashboard /> : <LoginPage />
+    return  auth ? <Dashboard /> : <LoginPage />
 }
 
 export default DashboardPage;

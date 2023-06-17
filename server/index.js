@@ -67,11 +67,11 @@ server.post("/register", (req, res) => {
 const userAuth = (req, res, next) => {
     const token = req.cookies.token;
     if (!token) {
-        return res.json({ message: "login first" })
+        return res.json({ login: false,message: "login first" })
     } else {
         jwt.verify(token, "secret", (err, decoded) => {
             if (err) {
-                return res.json({ message: "error authentication" })
+                return res.json({ login: false, message: "error authentication" })
             } else {
                 req.email = decoded.email;
                 next();
@@ -80,7 +80,7 @@ const userAuth = (req, res, next) => {
     }
 }
 
-server.post("/dashboard", userAuth, (req, res) => {
+server.post("/auth", userAuth, (req, res) => {
     return res.json({
         login: true,
         email: req.email
