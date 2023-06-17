@@ -9,9 +9,10 @@ function App() {
     <Router>
       <Routes>
         <Route path='/' element={ <HomePage/> } ></Route>
-        <Route path='/dashboard' element={ <DashboardPage/> }></Route>
         <Route path='/login' element={ <LoginPage/> } ></Route>
-        <Route path='/register' element={ <RegisterPage/> }></Route>
+        <Route path='/register' element={<RegisterPage />}></Route>
+        auth ?
+        <Route path='/dashboard' element={ <DashboardPage/> }></Route>
       </Routes>
     </Router>
   );

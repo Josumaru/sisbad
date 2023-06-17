@@ -1,8 +1,25 @@
 import "./Login.css"
+import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import logo from "../../asset/login-image.svg"
+import axios from "axios"
+
 const Login = () => {
     const navigate = useNavigate();
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+
+    useEffect(() => {
+
+    }, [])
+    axios.defaults.withCredentials = true;
+    const handleSubmit = async (e, email, password) => {
+        e.preventDefault();
+        const res = await axios.post(`http://localhost:3001/login?email=${email}&password=${password}`)
+        if (res.data.message === "success") {
+            navigate("/");
+        }
+    }
     return (
         <div className="login-page">
             <div className="login-section">
@@ -17,13 +34,13 @@ const Login = () => {
                     </div>
                     <form className="user-login">
                         <div>
-                            <input className="user-input" type="email" placeholder="User Email" />
+                            <input onChange={(e) => {setEmail(e.target.value) }} className="user-input" type="email" placeholder="User Email" />
                         </div>
                         <div>
-                            <input className="user-input" type="password" placeholder="Password"></input>
+                            <input onChange={(e) => {setPassword(e.target.value) }} className="user-input" type="password" placeholder="Password"></input>
                         </div>
                         <div className="submit-button">
-                            <button className="submit-button">Login</button> 
+                            <button className="submit-button" onClick={(e) => { handleSubmit(e, email, password) }}>Login</button> 
                         </div>
                     </form>
                 </div>
