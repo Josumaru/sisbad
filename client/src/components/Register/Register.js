@@ -14,7 +14,7 @@ const Register = () => {
                     <h1>Nothing last Forever!</h1>
                     <div className="navigate-link">
                         <p>Already have an Account?</p>
-                        <span style={{ color: "#fe715d", cursor: "pointer", marginLeft:"5px" }} onClick={() => { navigate("/login") }}>Login</span>
+                        <span style={{ color: "#fe715d", cursor: "pointer", marginLeft: "5px" }} onClick={() => { navigate("/login") }}>Login</span>
                     </div>
                     <form className="user-login">
                         <div>

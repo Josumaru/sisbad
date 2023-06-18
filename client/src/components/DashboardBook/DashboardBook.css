@@ -1,0 +1,53 @@
+.dashboard-book {
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    background-color: var(--background-color);
+    align-items: center;
+    justify-content: space-between;
+}
+.cover {
+    width: 140px;
+    height: 200px;
+    border-radius: 10px;
+    box-shadow: 5px 5px 4px rgb(177, 153, 153);
+}
+.cover img{
+    border-radius: 5px;
+    width: 100%;
+}
+
+.dashboard-book-section-left {
+    display: flex;
+    flex-direction: row;
+}
+.dashboard-book-section-left-right {
+    margin-left: 10px;
+}
+
+
+.book-count-down {
+    background-color: red;
+    color: var(--text-color);
+    border-radius: 5px;
+    font-size: 10px;
+    display: flex;
+    font-weight: 1000;
+    justify-content: center;
+    align-items: center;
+}
+.return-button {
+    font-weight: 1000;
+    cursor: pointer;
+    background-color: red;
+    color: var(--text-color);
+    border-radius: 5px;
+    font-size: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+    padding: 10px;
+}

@@ -7,7 +7,7 @@ const Home = () => {
     return (
         <>
             <body style={{ backgroundImage: "client/src/asset/2.jpg" }}>
-                <center style={{ backgroundImage: {logo} }}>
+                <center style={{ backgroundImage: { logo } }}>
                     <h6>READING'STIME</h6>
                     <button onClick={() => { navigate("/login") }}>Sign In</button>
                     <h1>LIBRARY SEARCH</h1>

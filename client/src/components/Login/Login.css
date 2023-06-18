@@ -3,7 +3,7 @@
     background-color: var(--main-color);
     width: 100vw;
     height: 100vh;
-    transition: all 1s ease-in-out;
+    transition: all .5s ease-in-out;
 }
 .login-section {
     display: flex;
@@ -13,8 +13,7 @@
     margin: 20px;
     height: 100vh;
 }
-
-.login-section-right{
+.login-section-right {
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
     background-color: var(--second-color);
@@ -25,13 +24,13 @@
     justify-content: center;
     flex-direction: column;
 }
-.login-section-right img{
+.login-section-right img {
     width: 80%;
 }
-.login-section-right h1{
+.login-section-right h1 {
     color: var(--text-color);
 }
-.login-section-left{
+.login-section-left {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -42,18 +41,16 @@
     height: 75%;
     width: 40%;
 }
-
 .user-login {
     width: 50%;
     display: flex;
     flex-direction: column;
-
 }
-.user-login div{
+.user-login div {
     width: 100%;
     background-color: var(--light-color);
     margin: 10px;
-    border-radius:10px ;
+    border-radius: 10px;
 }
 .user-input {
     background-color: transparent;
@@ -68,11 +65,9 @@
 .navigate-link {
     display: flex;
     align-items: center;
-
 }
-
 .submit-button {
-    width:100%;
+    width: 100%;
     background-color: var(--main-color);
     height: 60px;
     border: none;
@@ -80,7 +75,6 @@
     cursor: pointer;
     transition: all .5s ease;
 }
-
 .submit-button:hover {
     background-color: #f02005;
 }

@@ -74,6 +74,7 @@ const userAuth = (req, res, next) => {
                 return res.json({login: false, message: "error authentication" })
             } else {
                 req.email = decoded.email;
+                
                 next();
             }
         })

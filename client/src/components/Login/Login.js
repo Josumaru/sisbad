@@ -15,7 +15,7 @@ const Login = () => {
         const res = await axios.post(`http://localhost:3001/login?email=${email}&password=${password}`)
         console.log(res.data)
         if (res.data.message === "success") {
-            navigate("/dashboard");
+            navigate("/");
         }
     }
     return (
