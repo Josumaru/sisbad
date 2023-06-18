@@ -1,0 +1,44 @@
+.Body{
+    background-color: lightcyan;
+}
+.Atas {
+    text-align: center;
+    border-radius: 10px;
+    background-color: lightcyan;
+    height: 25%;
+    display: center;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+}
+.SignIn {
+    text-align: right;
+    
+}
+.search{
+    border-radius: 10px;
+    background-color: var(--background-color);
+    width: 275px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+}
+.Buku{
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 5px;
+    border-radius: 5px;
+    background-color: var(--background-color);
+    align-items: center;
+    justify-content: center;
+    margin-left: 80px;
+}
+.Buku div{
+    margin: 5px;
+    padding: 1px;
+    margin-bottom: 1px;
+}
