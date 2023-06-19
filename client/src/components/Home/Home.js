@@ -11,25 +11,28 @@ const Home = () => {
     return (
         <>
             <div>
-                <img className="background-page" src={logo}></img>
-
+                <img className="background-page" style={{width:"100%",height:"70vh", overflow:"hidden"}} src={logo}></img>
                 <div className="Atas">
                     <h1>LIBRARY SEARCH</h1>
                     <p>Buku adalah jendela dunia</p>
                     <div className="Search" >
-                        <div className="search-bar-home" >
-                            <input type="search-home" placeholder="Search book,Stories,Article,and more" className="search"></input>
-                            <button className="search-button-home" ><FiSearch style={{ fontSize: "25px" }} /></button>
+                        <div className="search-bar-home">
+                            <div className="search-bar-home-page">
+                                <input type="search-home" placeholder="Search book,Stories,Article,and more" className="search"></input>
+                            </div>
+                            <div className="button-div">
+                                <button className="search-button-home" ><FiSearch style={{ fontSize: "25px" }} /></button>
+                            </div>
                         </div>
                     </div>
                 </div>
                 <div className="background-page-div">
-                    <div style={{ width: "90px"}}>
+                    <div style={{ width: "90px" }}>
                         <CgMenuGridR style={{ fontSize: "40px" }} />
                     </div>
                     <h6>READING'STIME</h6>
                     <div className="SignIn">
-                        <AiOutlineUserAdd className="SignInAi"/>
+                        <AiOutlineUserAdd className="SignInAi" />
                         <button className="SignInButton" onClick={() => { navigate("/login") }}>Sign In</button>
                     </div>
                 </div>
@@ -37,11 +40,12 @@ const Home = () => {
             <div ClassName="Body">
                 <div className="Buku">
                     <div className="Buku-home">
-                        <Category BukuPage={"Judul, Penulis"} color={"linear-gradient(43deg, #8895e3 0%, #6cc0f7 100%"}/>
-                        <Category BukuPage={"Judul, Penulis"} color={"linear-gradient(43deg, #8895e3 0%, #6cc0f7 100%"}/>
-                        <Category BukuPage={"Judul, Penulis"} color={"linear-gradient(43deg, #8895e3 0%, #6cc0f7 100%"}/>
+                        <BukuPage penulis Penulis={"Pak Husni"} judul={"Python 3"} url={ "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1249749162i/6688121.jpg" } />
+                        <BukuPage penulis Penulis={"Pak Husni"} judul={"Python 3"} url={ "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1249749162i/6688121.jpg" } />
+                        <BukuPage penulis Penulis={"Pak Husni"} judul={"Python 3"} url={ "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1249749162i/6688121.jpg" } />
                     </div>
                 </div>
+                <div className="kotak-kosong"></div>
                 <div className="category">
                     <h3>Find More Category</h3>
                     <div className="category-book">

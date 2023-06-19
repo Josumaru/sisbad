@@ -2,10 +2,12 @@ import "./Bukupage.css"
 
 const Bukupage = (props) => {
     return (
-        <div style={{ background:props.color}} className="Buku-cover">
-            <h5>
-                {props.Bukupage}
-            </h5>
+        <div className="buku">
+            <div className="cover-book-home">
+                <img className="cover-image" src={ props.url }></img>
+            </div>
+            <p>{props.judul}</p>
+            <p>{props.Penulis}</p>
         </div>
     )
 }

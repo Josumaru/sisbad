@@ -39,8 +39,6 @@
 }
 .search-home{
     border-radius: 10px;
-    /* background-color: var(--background-color); */
-    background-color: red;
     width: 275px;
     display: flex;
     flex-direction: row;
@@ -48,14 +46,21 @@
     justify-content: space-between;
     padding: 10px;
 }
-.Buku-Home{
+.Buku-home{
     display: flex;
     flex-direction: row;
 }
-.Buku div{
-    margin: 5px;
-    padding: 1px;
-    margin-bottom: 1px;
+.Buku{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    position: absolute;
+    top: 550px;
+
+}
+.Buku div {
+    margin: 10px;
 }
 .category {
  text-indent: 20px;
@@ -85,6 +90,36 @@
     justify-content: space-between;
 }
 
-.search-home {
-    background-color: red;
+.search-bar-home {
+    display: flex;
+    flex-direction: row;
+    height: 60px;
+}
+.search-bar-home-page {
+    background-color: var(--text-color);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-right: 10px;
+    justify-content: center;
+}
+
+.button-div {
+    background-color: var(--main-color);
+    width: 60px;
+    width: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+}
+
+.button-div button{
+    background-color: transparent;
+    border: none;
+}
+
+.kotak-kosong {
+    /* background-color: red; */
+    height: 350px;
 }
