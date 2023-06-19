@@ -48,16 +48,9 @@
     justify-content: space-between;
     padding: 10px;
 }
-.Buku{
-    padding: 10px;
+.Buku-Home{
     display: flex;
     flex-direction: row;
-    margin-bottom: 5px;
-    border-radius: 5px;
-    background-color: var(--background-color);
-    align-items: center;
-    justify-content: center;
-    margin-left: 80px;
 }
 .Buku div{
     margin: 5px;

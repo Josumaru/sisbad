@@ -5,6 +5,7 @@ import { FiSearch } from "react-icons/fi"
 import { CgMenuGridR } from "react-icons/cg"
 import { AiOutlineUserAdd } from "react-icons/ai"
 import Category from "../Category/Category"
+import BukuPage from "../BukuPage/Bukupage"
 const Home = () => {
     const navigate = useNavigate();
     return (
@@ -35,26 +36,10 @@ const Home = () => {
             </div>
             <div ClassName="Body">
                 <div className="Buku">
-                    <div>
-                        <div className="cover">
-                            <img src="https://marketplace.canva.com/EAFYHx4rn2w/1/0/1131w/canva-coklat-krem-kreatif-modern-cover-buku-agenda-dokumen-a4-0zKNiSfvTXM.jpg"></img>
-                        </div>
-                        <p>Judul</p>
-                        <p>Penulis</p>
-                    </div>
-                    <div>
-                        <div className="cover">
-                            <img src="https://marketplace.canva.com/EAFYHx4rn2w/1/0/1131w/canva-coklat-krem-kreatif-modern-cover-buku-agenda-dokumen-a4-0zKNiSfvTXM.jpg"></img>
-                        </div>
-                        <p>Judul</p>
-                        <p>Penulis</p>
-                    </div>
-                    <div>
-                        <div className="cover">
-                            <img src="https://marketplace.canva.com/EAFYHx4rn2w/1/0/1131w/canva-coklat-krem-kreatif-modern-cover-buku-agenda-dokumen-a4-0zKNiSfvTXM.jpg"></img>
-                        </div>
-                        <p>Judul</p>
-                        <p>Penulis</p>
+                    <div className="Buku-home">
+                        <Category BukuPage={"Judul, Penulis"} color={"linear-gradient(43deg, #8895e3 0%, #6cc0f7 100%"}/>
+                        <Category BukuPage={"Judul, Penulis"} color={"linear-gradient(43deg, #8895e3 0%, #6cc0f7 100%"}/>
+                        <Category BukuPage={"Judul, Penulis"} color={"linear-gradient(43deg, #8895e3 0%, #6cc0f7 100%"}/>
                     </div>
                 </div>
                 <div className="category">
