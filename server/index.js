@@ -54,14 +54,27 @@ server.post("/login", (req, res) => {
 
 })
 
-
 server.post("/register", (req, res) => {
-    const query = "INSERT INTO account(email, nama, password) values (24, 'Johan', 'Jl. Perang')"
-    connection.query(query, (err, result) => {
-        if (err) throw err;
-        req.send(result);
-    })
+    const { name, id, email, password } = req.query;
+    const query = `INSERT INTO account(id_account, email, nama, password) values (${id},'${email}', '${name}', '${password}')`
+    try {
+        connection.query(query, (err, result) => {
+            if (err) res.send("error");
+            res.send({message: "success"});
+        })
+    } catch (error) {
+        res.send("Internal Server Error")
+    }
 })
+
+
+server.get("/logout", (req, res) => {
+    res.clearCookie("token");
+    return res.json({
+        message: "success"
+    })    
+})    
+
 
 
 const userAuth = (req, res, next) => {
@@ -74,7 +87,6 @@ const userAuth = (req, res, next) => {
                 return res.json({login: false, message: "error authentication" })
             } else {
                 req.email = decoded.email;
-                
                 next();
             }
         })
