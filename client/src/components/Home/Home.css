@@ -3,22 +3,44 @@
 }
 .Atas {
     text-align: center;
+    position: absolute;
+    width: 100%;
+    flex-direction: column;
     border-radius: 10px;
-    background-color: lightcyan;
     height: 25%;
     display: center;
-    flex-direction: row;
     align-items: center;
     justify-content: center;
-    padding: 10px;
+    display: flex;
+    top: 100px;
+    left: 0;
+}
+.SignInAi {
+    width: 25px;
+    height: 25px;
 }
 .SignIn {
-    text-align: right;
-    
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
-.search{
+.SignIn:hover {
+    border-radius: 15px;
+    background-color: rgba(255, 255, 255, 0.25);
+
+}
+.SignInButton {
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+    border: none;
+    flex-direction: row;
+}
+.search-home{
     border-radius: 10px;
-    background-color: var(--background-color);
+    /* background-color: var(--background-color); */
+    background-color: red;
     width: 275px;
     display: flex;
     flex-direction: row;
@@ -41,4 +63,35 @@
     margin: 5px;
     padding: 1px;
     margin-bottom: 1px;
+}
+.category {
+ text-indent: 20px;
+}
+.category-book {
+    display: flex;
+    flex-direction: row;
+}
+
+.background-page {
+    display: block;
+    position: relative;
+    width: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.background-page-div {
+    display:contents;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    color: black;
+    justify-content: space-between;
+}
+
+.search-home {
+    background-color: red;
 }

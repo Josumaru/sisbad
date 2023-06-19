@@ -4,7 +4,12 @@ import { MdDashboard, MdLogout, MdBook } from "react-icons/md"
 import { FiSearch } from "react-icons/fi"
 import DashboardBook from "../DashboardBook/DashboardBook";
 import { useEffect, useState, useRef } from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+
 const Dashboard = () => {
+    const navigate = useNavigate()
+    axios.defaults.withCredentials = true;
     const [showReturn, setShowReturn] = useState(true);
     const [showBorrow, setShowBorrow] = useState(true);
     const borrowRef = useRef();
@@ -35,6 +40,15 @@ const Dashboard = () => {
         setShowBorrow(true);
         setShowReturn(false);
     }
+    const handleLogout = () => {
+        axios.get("http://localhost:3001/logout")
+            .then((res) => {
+                console.log(res.data.message)
+                if (res.data.message === "success") {
+                    window.location.reload()
+                }
+            })
+    }
     return (
         <div className="dashboard">
             <div className="dashboard-left-section">
@@ -45,7 +59,7 @@ const Dashboard = () => {
                     <MdDashboard style={{ fontSize: "35px", cursor: "pointer" }} />
                 </div>
                 <div>
-                    <MdLogout style={{ fontSize: "35px", cursor: "pointer" }} />
+                    <MdLogout onClick={handleLogout} style={{ fontSize: "35px", cursor: "pointer" }} />
                 </div>
             </div>
             <div className="dashboard-mid-section">
@@ -69,17 +83,17 @@ const Dashboard = () => {
                 </div>
                 <div className="dashboard-mid-section-bottom">
                     <div ref={borrowRef} className="book-borrowed">
-                        <DashboardBook title="Sebelah Utara Masjid" author="Sasuke"/>
-                        <DashboardBook title="Sebelah Utara Masjid" author="Sasuke"/>
-                        <DashboardBook title="Sebelah Utara Masjid" author="Sasuke"/>
-                        <DashboardBook title="Sebelah Utara Masjid" author="Sasuke"/>
-                        <DashboardBook title="Sebelah Utara Masjid" author="Sasuke"/>
+                        <DashboardBook title="Sebelah Utara Masjid" author="Sasuke" />
+                        <DashboardBook title="Sebelah Utara Masjid" author="Sasuke" />
+                        <DashboardBook title="Sebelah Utara Masjid" author="Sasuke" />
+                        <DashboardBook title="Sebelah Utara Masjid" author="Sasuke" />
+                        <DashboardBook title="Sebelah Utara Masjid" author="Sasuke" />
                     </div>
                     <div ref={returnRef} className="book-history">
-                    <DashboardBook title="Ini Buku yang dipinjam" author="Soeharto Kumamura"/>
-                    <DashboardBook title="Ini Buku yang dipinjam" author="Soeharto Kumamura"/>
-                    <DashboardBook title="Ini Buku yang dipinjam" author="Soeharto Kumamura"/>
-                    <DashboardBook title="Ini Buku yang dipinjam" author="Soeharto Kumamura"/>
+                        <DashboardBook title="Ini Buku yang dipinjam" author="Soeharto Kumamura" />
+                        <DashboardBook title="Ini Buku yang dipinjam" author="Soeharto Kumamura" />
+                        <DashboardBook title="Ini Buku yang dipinjam" author="Soeharto Kumamura" />
+                        <DashboardBook title="Ini Buku yang dipinjam" author="Soeharto Kumamura" />
 
                     </div>
                 </div>
