@@ -1,0 +1,71 @@
+.tambah-login-page {
+    position: fixed;
+    background-color: var(--main-color);
+    width: 100vw;
+    height: 100vh;
+    transition: all .5s ease-in-out;
+}
+.atambah-login-section-right {
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    background-color: var(--second-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.tambah-login-section-right h1 {
+    color: var(--text-color);
+}
+.atambah-login-section-left {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    background-color: var(--background-color);
+
+}
+.tambah-user-login {
+    display: flex;
+    flex-direction: column;
+}
+.tambah-user-login div {
+    width: 100%;
+    background-color: var(--light-color);
+    margin: 10px;
+    border-radius: 10px;
+}
+.tambah-user-input {
+    background-color: transparent;
+    border: none;
+    height: 40px;
+    margin: 10px;
+    width: 91%;
+}
+.tambah-user-input:focus {
+    outline: none;
+}
+.-tambahnavigate-link {
+    display: flex;
+    align-items: center;
+}
+.tambah-submit-button {
+    width: 100%;
+    background-color: var(--main-color);
+    height: 60px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all .5s ease;
+}
+.submit-button:hover {
+    background-color: #f02005;
+}
+
+.admin-text {
+    display: flex;
+    justify-content: center;
+}
