@@ -12,6 +12,26 @@
     top: 100px;
 }
 
+.ib{
+    color: black;
+}
+
+.rt{
+    display: flex;
+}
+
+.Reading{
+    color: orangered;
+    font-family: Helvetica;
+    font-size: medium;
+}
+
+.Time{
+    color: black;
+    font-family: Helvetica;
+    font-size: medium;
+}
+
 .SignInAi {
     width: 25px;
     height: 25px;

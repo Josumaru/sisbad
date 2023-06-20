@@ -14,8 +14,10 @@ const Home = () => {
             <div>
                 <img className="background-page" style={{width:"100%",height:"70vh", overflow:"hidden"}} src={logo}></img>
                 <div className="Atas">
-                    <h1 style={{margin: "0"}}>LIBRARY SEARCH</h1>
-                    <p style={{ marginTop: "0", marginBottom: "70px" }} >Buku adalah jendela dunia</p>
+                    <div className="ib">
+                        <h1 style={{margin: "0"}}>LIBRARY SEARCH</h1>
+                        <p style={{ marginTop: "0", marginBottom: "70px" }} >Buku adalah jendela dunia</p>
+                    </div>
                     <div className="Search" >
                         <div className="search-bar-home">
                             <div className="search-bar-home-page">
@@ -31,7 +33,12 @@ const Home = () => {
                     <div className="menu-grid">
                         <CgMenuGridR onClick={() => { navigate("/dashboard") } } style={{ fontSize: "34px" }} />
                     </div>
-                    <h6 style={{marginLeft:"110px"}}>READING'STIME</h6>
+                    <h6 style={{marginLeft:"110px"}}>
+                        <div className="rt">
+                            <div className="Reading">READING'S</div>
+                            <div className="Time">TIME</div>
+                        </div>
+                    </h6>
                     <div className="SignIn">
                         <AiOutlineUserAdd className="SignInAi" />
                         <button className="SignInButton" onClick={() => { navigate("/login") }}>Sign In</button>
