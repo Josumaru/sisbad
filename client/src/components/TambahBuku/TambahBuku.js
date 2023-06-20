@@ -18,10 +18,9 @@ const TambahBuku = () => {
     const handleSubmit = async (e, id_buku, judul, penulis, penerbit, tahun_terbit, sinopsis, cover) => {
         e.preventDefault();
         const res = await axios.post(`http://localhost:3001/addbook?id_buku=${id_buku}&judul=${judul}&penulis=${penulis}&penerbit=${penerbit}&tahun_terbit=${tahun_terbit}&sinopsis=${sinopsis}&cover=${cover}`)
-        // console.log(res.data)
         if (res.data.message === "success") {
             console.log(res.data)
-            // navigate("/");
+            window.location.reload()
         }
     }
 

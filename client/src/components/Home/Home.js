@@ -6,6 +6,7 @@ import { CgMenuGridR } from "react-icons/cg"
 import { AiOutlineUserAdd } from "react-icons/ai"
 import Category from "../Category/Category"
 import BukuPage from "../BukuPage/Bukupage"
+import HomeBook from "../HomeBook/HomeBook"
 const Home = () => {
     const navigate = useNavigate();
     return (
@@ -40,9 +41,9 @@ const Home = () => {
             <div ClassName="Body">
                 <div className="Buku">
                     <div className="Buku-home">
-                        <BukuPage Penulis={"Pak Husni"} judul={"Python 3"} url={ "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1249749162i/6688121.jpg" } />
-                        <BukuPage Penulis={"Pak Husni"} judul={"Python 3"} url={ "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1249749162i/6688121.jpg" } />
-                        <BukuPage Penulis={"Pak Husni"} judul={"Python 3"} url={ "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1249749162i/6688121.jpg" } />
+                        <HomeBook Penulis={"Pak Husni"} judul={"Python 3"} url={ "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1249749162i/6688121.jpg" } />
+                        <HomeBook Penulis={"Pak Husni"} judul={"Python 3"} url={ "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1249749162i/6688121.jpg" } />
+                        <HomeBook Penulis={"Pak Husni"} judul={"Python 3"} url={ "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1249749162i/6688121.jpg" } />
                     </div>
                 </div>
                 <div className="kotak-kosong"></div>

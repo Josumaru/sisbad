@@ -1,0 +1,25 @@
+.Buku-cover{
+    border-radius: 5px;
+    margin: 20px;
+    padding: 20px;
+    width: 20%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+.buku{
+    /* background-color: red; */
+    width: 200px;
+    height: 300px;
+}
+
+.cover-book-home {
+    box-shadow: 5px 5px 4px rgba(177, 153, 153, 0.706);
+    width: 100%;
+    height: 100%;
+}
+
+.cover-image {
+    width: 100%;
+}

@@ -20,6 +20,7 @@ const Dashboard = () => {
         fetch(url).then((response => response.json())).then(data => {
             console.log(data)
             setAllBook(data)
+
         })
         
     },[])
@@ -58,7 +59,7 @@ const Dashboard = () => {
                     <div ref={borrowRef} className="book-borrowed">
                     {allBook.map((book) => {
                     return (
-                        <Bukupage judul={book.judul} penulis = {book.penulis} />
+                        <Bukupage judul={book.judul} penulis={book.penulis} cover={book.cover} penerbit={ book.penerbit} />
                     )
                 })}
                     </div>
