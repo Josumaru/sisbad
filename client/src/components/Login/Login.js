@@ -30,6 +30,7 @@ const Login = () => {
                         <p>Not a Member?</p>
                         <span style={{color:"#fe715d", cursor:"pointer", marginLeft:"5px"}} onClick={() => { navigate("/register") }}>Register</span>
                     </div>
+                    <p style={{ cursor: "pointer" , margin: "0", color: "var(--main-color)" }} onClick={() => { navigate("/") }}>Sign in later</p>
                     <form className="user-login">
                         <div>
                             <input onChange={(e) => {setEmail(e.target.value) }} className="user-input" type="email" placeholder="User Email" />

@@ -57,13 +57,23 @@ server.post("/login", (req, res) => {
 server.post("/register", (req, res) => {
     const { name, id, email, password } = req.query;
     const query = `INSERT INTO account(id_account, email, nama, password) values (${id},'${email}', '${name}', '${password}')`
+    const checker = `SELECT * FROM account WHERE id_account = ${id} OR email = '${email}'`
     try {
-        connection.query(query, (err, result) => {
-            if (err) res.send("error");
-            res.send({message: "success"});
+        connection.query(checker, (err, result) => {
+            console.log(checker)
+            console.log(result)
+            if (result.length === 0) {
+                connection.query(query, (err, result) => {
+                    console.log(query)
+                    if (err) res.send("error");
+                    res.send({message: "success"});
+                })
+            } else {
+                res.send("error")
+            }
         })
     } catch (error) {
-        res.send("Internal Server Error")
+        res.send("Internal Server Error");
     }
 })
 
