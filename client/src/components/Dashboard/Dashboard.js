@@ -53,9 +53,6 @@ const Dashboard = () => {
         <div className="dashboard">
             <div className="dashboard-left-section">
                 <div>
-                    <div className="dashboard-logo">
-                        <MdBook />
-                    </div>
                     <MdDashboard style={{ fontSize: "35px", cursor: "pointer" }} />
                 </div>
                 <div>
