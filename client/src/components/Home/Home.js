@@ -11,6 +11,7 @@ const Home = () => {
     const navigate = useNavigate();
     return (
         <>
+        <div className="Hopa">
             <div>
                 <img className="background-page" style={{width:"100%",height:"70vh", overflow:"hidden"}} src={logo}></img>
                 <div className="Atas">
@@ -45,7 +46,6 @@ const Home = () => {
                     </div>
                 </div>
             </div>
-            <div ClassName="Body">
                 <div className="Buku">
                     <div className="Buku-home">
                         <HomeBook Penulis={"Pak Husni"} judul={"Python 3"} url={ "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1249749162i/6688121.jpg" } />
@@ -72,7 +72,7 @@ const Home = () => {
                         <Category category={"📔 Novel"} color={"linear-gradient(43deg, rgba(251,173,126,1) 0%, rgba(249,203,105,1) 100%)"} />
                     </div>
                 </div>
-            </div>
+        </div>
         </>
     )
 }
