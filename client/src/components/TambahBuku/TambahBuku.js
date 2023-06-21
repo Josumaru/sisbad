@@ -4,7 +4,9 @@ import { useNavigate } from "react-router-dom"
 import logo from "../../asset/login-image.svg"
 import axios from "axios"
 
-const TambahBuku = () => {
+const TambahBuku = (props) => {
+
+    axios.defaults.withCredentials = true;
     const navigate = useNavigate();
     const [id_buku, setIdBuku] = useState("")
     const [judul, setJudul] = useState("")
@@ -13,16 +15,33 @@ const TambahBuku = () => {
     const [tahun_terbit, setTahun] = useState("")
     const [sinopsis, setSinopsis] = useState("")
     const [cover, setCover] = useState("")
-
-    axios.defaults.withCredentials = true;
+    const [button, setButton] = useState("Add Book")
     const handleSubmit = async (e, id_buku, judul, penulis, penerbit, tahun_terbit, sinopsis, cover) => {
         e.preventDefault();
-        const res = await axios.post(`http://localhost:3001/addbook?id_buku=${id_buku}&judul=${judul}&penulis=${penulis}&penerbit=${penerbit}&tahun_terbit=${tahun_terbit}&sinopsis=${sinopsis}&cover=${cover}`)
-        if (res.data.message === "success") {
-            console.log(res.data)
-            window.location.reload()
+        if (button === "Add Book") {
+            const res = await axios.post(`http://localhost:3001/addbook?id_buku=${id_buku}&judul=${judul}&penulis=${penulis}&penerbit=${penerbit}&tahun_terbit=${tahun_terbit}&sinopsis=${sinopsis}&cover=${cover}`)
+            if (res.data.message === "success") {
+                window.location.reload()
+            }
+        } else {
+            const res = await axios.post(`http://localhost:3001/addbook?id_buku=${id_buku}&judul=${judul}&penulis=${penulis}&penerbit=${penerbit}&tahun_terbit=${tahun_terbit}&sinopsis=${sinopsis}&cover=${cover}`)
+            if (res.data.message === "success") {
+                window.location.reload()
+            }
         }
     }
+
+    useEffect(() => {
+        setButton(props.button)
+        setJudul(props.judul)
+        setPenerbit(props.penerbit)
+        setCover(props.cover)
+        setIdBuku(props.id_buku)
+        setTahun(props.tahun_terbit)
+        setSinopsis(props.sinopsis)
+        setPenulis(props.penulis)
+        setButton(props.button)
+    }, [props])
 
     return (
         <div className="tambah-page">
@@ -33,28 +52,28 @@ const TambahBuku = () => {
                     </div>
                     <form className="tambah-user-login">
                         <div>
-                            <input required="true" onChange={(e) => { setIdBuku(e.target.value) }} className="user-input" type="number" placeholder="ID-Buku" />
+                            <input value={id_buku} onChange={(e) => { setIdBuku(e.target.value) }} className="user-input" type="number" placeholder="ID-Buku" />
                         </div>
                         <div>
-                            <input required="true" onChange={(e) => { setJudul(e.target.value) }} className="user-input" type="text" placeholder="Judul Buku" />
+                            <input required={true} value={judul} onChange={(e) => { setJudul(e.target.value) }} className="user-input" type="text" placeholder="Judul Buku" />
                         </div>
                         <div>
-                            <input required="true" onChange={(e) => { setPenulis(e.target.value) }} className="user-input" type="text" placeholder="Penulis" />
+                            <input required={true} value={penulis} onChange={(e) => { setPenulis(e.target.value) }} className="user-input" type="text" placeholder="Penulis" />
                         </div>
                         <div>
-                            <input required="true" onChange={(e) => { setPenerbit(e.target.value) }} className="user-input" type="text" placeholder="Penerbit"></input>
+                            <input required={true} value={penerbit} onChange={(e) => { setPenerbit(e.target.value) }} className="user-input" type="text" placeholder="Penerbit"></input>
                         </div>
                         <div>
-                            <input required="true" onChange={(e) => { setTahun(e.target.value) }} className="user-input" type="number" placeholder="Tahun Terbit"></input>
+                            <input required={true} value={tahun_terbit } onChange={(e) => { setTahun(e.target.value) }} className="user-input" type="number" placeholder="Tahun Terbit"></input>
                         </div>
                         <div>
-                            <input required="true" onChange={(e) => { setSinopsis(e.target.value) }} className="user-input" type="text" placeholder="Sinopsis"></input>
+                            <input required={true} value={sinopsis} onChange={(e) => { setSinopsis(e.target.value) }} className="user-input" type="text" placeholder="Sinopsis"></input>
                         </div>
                         <div>
-                            <input required="true" onChange={(e) => { setCover(e.target.value) }} className="user-input" type="text" placeholder="Cover"></input>
+                            <input required={true} value={cover} onChange={(e) => { setCover(e.target.value) }} className="user-input" type="text" placeholder="Cover"></input>
                         </div>
                         <div className="submit-button">
-                            <button onClick={(e) => { handleSubmit(e,id_buku, judul, penulis, penerbit, tahun_terbit, sinopsis, cover) }} className="submit-button">Add Book</button>
+                            <button onClick={(e) => { handleSubmit(e, id_buku, judul, penulis, penerbit, tahun_terbit, sinopsis, cover) }} className="submit-button">{ button }</button>
                         </div>
                     </form>
                 </div>

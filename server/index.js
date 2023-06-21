@@ -1,4 +1,4 @@
-import express from "express";
+import express, { query } from "express";
 import mysql from "mysql";
 import cors from "cors"
 import jwt from "jsonwebtoken"
@@ -46,7 +46,7 @@ server.post("/login", (req, res) => {
             const email = result[0].email
             const role = result[0].role
             const nama = result[0].nama
-            const token = jwt.sign({  email, role, nama }, "secret", { expiresIn: "1d" });
+            const token = jwt.sign({ email, role, nama }, "secret", { expiresIn: "1d" });
             res.cookie("token", token)
             return res.json({
                 message: "success"
@@ -66,7 +66,7 @@ server.post("/register", (req, res) => {
             if (result.length === 0) {
                 connection.query(query, (err, result) => {
                     if (err) res.send("error");
-                    res.send({message: "success"});
+                    res.send({ message: "success" });
                 })
             } else {
                 res.send("error")
@@ -80,7 +80,7 @@ server.post("/register", (req, res) => {
 
 
 server.post("/addbook", (req, res) => {
-    const { id_buku, judul , penulis, penerbit, tahun_terbit, sinopsis, cover} = req.query;
+    const { id_buku, judul, penulis, penerbit, tahun_terbit, sinopsis, cover } = req.query;
     const query = `INSERT INTO buku(id_buku, judul, penulis, penerbit, tahun_terbit, sinopsis, cover) values (${id_buku},'${judul}', '${penulis}', '${penerbit}', ${tahun_terbit}, '${sinopsis}','${cover}')`
     const checker = `SELECT * FROM buku WHERE id_buku = ${id_buku}`
     try {
@@ -91,7 +91,7 @@ server.post("/addbook", (req, res) => {
                 connection.query(query, (err, result) => {
                     console.log(result)
                     if (err) res.send("error");
-                    res.send({message: "success"});
+                    res.send({ message: "success" });
                 })
             } else {
                 res.send("error")
@@ -108,8 +108,8 @@ server.get("/logout", (req, res) => {
     res.clearCookie("token");
     return res.json({
         message: "success"
-    })    
-}) 
+    })
+})
 
 
 server.get("/showbook", (req, res) => {
@@ -119,16 +119,38 @@ server.get("/showbook", (req, res) => {
     })
 })
 
+server.post("/updatebook", (req, res) => {
+    const { id_buku, judul, penulis, penerbit, tahun_terbit, sinopsis, cover } = req.query;
+    const query = `UPDATE buku SET id_buku = ${id_buku}, judul = '${judul}', penulis = '${penulis}', penerbit = '${penerbit}', tahun_terbit = ${tahun_terbit}, sinopsis = '${sinopsis}', cover = '${cover}' WHERE id_buku = ${id_buku}`
+    try {
+        connection.query(query, (err, result) => {
+            if (err) res.send("error");
+            res.send({ message: "success" });
+        })
+    } catch (error) {
+        res.send("Internal Server Error");
+    }
+})
+
+server.post("/deletebook", (req, res) => {
+    const { id_buku } = req.query;
+    const query = `delete from buku where id_buku=${id_buku}`
+    connection.query(query, (err, result) => {
+        if (err) res.send("error");
+        res.send({message: "success"})
+    })
+})
+
 
 
 const userAuth = (req, res, next) => {
     const token = req.cookies.token;
     if (!token) {
-        return res.json({ login : false, message: "login first" })
+        return res.json({ login: false, message: "login first" })
     } else {
         jwt.verify(token, "secret", (err, decoded) => {
             if (err) {
-                return res.json({login: false, message: "error authentication" })
+                return res.json({ login: false, message: "error authentication" })
             } else {
                 req.email = decoded.email;
                 req.role = decoded.role;
@@ -145,6 +167,5 @@ server.post("/auth", userAuth, (req, res) => {
         login: true,
         email: req.email,
         role: req.role,
-        // nama: req.nama
     })
 })

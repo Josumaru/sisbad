@@ -1,34 +1,35 @@
-import Progress from "../Progress/Progress";
 import "./DashboardAdmin.css";
 import TambahBuku from "../TambahBuku/TambahBuku"
 import { MdDashboard, MdLogout, MdBook } from "react-icons/md"
 import { FiSearch } from "react-icons/fi"
-import DashboardBook from "../DashboardBook/DashboardBook";
 import { useEffect, useState, useRef } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import Bukupage from "../BukuPage/Bukupage";
 
 const Dashboard = () => {
-    const navigate = useNavigate()
     axios.defaults.withCredentials = true;
+    const navigate = useNavigate()
     const borrowRef = useRef();
     const [allBook, setAllBook] = useState([]);
+    const [updateBook, setUpdateBook] = useState("")
+    const [button, setButton] = useState("Add Book")
+
+    const handleClick = (data) => {
+        setUpdateBook(data)
+        setButton("Update Book")
+    }
 
     useEffect(() => {
-        let url = "http://localhost:3001/showbook"
-        fetch(url).then((response => response.json())).then(data => {
-            console.log(data)
-            setAllBook(data)
-
-        })
-        
-    },[])
+        axios.get("http://localhost:3001/showbook")
+            .then((res) => {
+                setAllBook(res.data)
+            })
+    }, [])
 
     const handleLogout = () => {
         axios.get("http://localhost:3001/logout")
             .then((res) => {
-                console.log(res.data.message)
                 if (res.data.message === "success") {
                     window.location.reload()
                 }
@@ -57,16 +58,25 @@ const Dashboard = () => {
                 </div>
                 <div className="dashboard-mid-section-bottom">
                     <div ref={borrowRef} className="book-borrowed">
-                    {allBook.map((book) => {
-                    return (
-                        <Bukupage judul={book.judul} penulis={book.penulis} cover={book.cover} penerbit={ book.penerbit} />
-                    )
-                })}
+                        {allBook.map((book) => {
+                            return (
+                                <Bukupage transfer={handleClick} id_buku={book.id_buku} tahun_terbit={book.tahun_terbit} judul={book.judul} penulis={book.penulis} cover={book.cover} penerbit={book.penerbit} sinopsis={book.sinopsis} />
+                            )
+                        })}
                     </div>
                 </div>
             </div>
             <div className="dashboard-right-section">
-                <TambahBuku />
+                <TambahBuku
+                    id_buku={updateBook.id_buku}
+                    judul={updateBook.judul}
+                    cover={updateBook.cover}
+                    penerbit={updateBook.penerbit}
+                    penulis={updateBook.penulis}
+                    sinopsis={updateBook.sinopsis}
+                    tahun_terbit={updateBook.tahun_terbit}
+                    button={button}
+                />
             </div>
         </div>
     )

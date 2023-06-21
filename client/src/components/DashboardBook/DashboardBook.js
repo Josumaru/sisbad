@@ -12,8 +12,8 @@ const DashboardBook = (props) => {
                 <div className="dashboard-book-section-left-right">
                     <div className="book-count-down">3 days left</div>
                     <div className="book-title">
-                        <h4>{ props.title}</h4>
-                        <p>{ props.author}</p>
+                        <h4>{props.title}</h4>
+                        <p>{props.author}</p>
                     </div>
                     <div className="book-rating">
                         <p>Bintang 5</p>
