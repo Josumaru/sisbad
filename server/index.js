@@ -169,3 +169,14 @@ server.post("/auth", userAuth, (req, res) => {
         role: req.role,
     })
 })
+
+server.get("/pageview", (req, res) => {
+    const { id_buku } = req.query;
+    const query = `SELECT * FROM buku WHERE id_buku like '${id_buku}%'`
+    connection.query(query, (err, result) => {
+        console.log(result)
+        if (err) res.send("error");
+        res.send(result)
+        // res.send({message: "success"})
+    })
+})

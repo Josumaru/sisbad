@@ -6,7 +6,7 @@ const Bukupage = (props) => {
             <div className="cover-book-home">
                 <img className="cover-image" src={ props.url }></img>
             </div>
-            <p>{props.judul}</p>
+            <h6>{props.judul}</h6>
             <p>{props.penulis}</p>
         </div>
     )

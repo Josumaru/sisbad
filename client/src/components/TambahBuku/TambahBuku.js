@@ -1,13 +1,10 @@
 import "./TambahBuku.css"
 import { useEffect, useState } from "react"
-import { useNavigate } from "react-router-dom"
-import logo from "../../asset/login-image.svg"
 import axios from "axios"
 
 const TambahBuku = (props) => {
 
     axios.defaults.withCredentials = true;
-    const navigate = useNavigate();
     const [id_buku, setIdBuku] = useState("")
     const [judul, setJudul] = useState("")
     const [penulis, setPenulis] = useState("")
@@ -24,7 +21,7 @@ const TambahBuku = (props) => {
                 window.location.reload()
             }
         } else {
-            const res = await axios.post(`http://localhost:3001/addbook?id_buku=${id_buku}&judul=${judul}&penulis=${penulis}&penerbit=${penerbit}&tahun_terbit=${tahun_terbit}&sinopsis=${sinopsis}&cover=${cover}`)
+            const res = await axios.post(`http://localhost:3001/updatebook?id_buku=${id_buku}&judul=${judul}&penulis=${penulis}&penerbit=${penerbit}&tahun_terbit=${tahun_terbit}&sinopsis=${sinopsis}&cover=${cover}`)
             if (res.data.message === "success") {
                 window.location.reload()
             }
@@ -52,7 +49,7 @@ const TambahBuku = (props) => {
                     </div>
                     <form className="tambah-user-login">
                         <div>
-                            <input value={id_buku} onChange={(e) => { setIdBuku(e.target.value) }} className="user-input" type="number" placeholder="ID-Buku" />
+                            <input required={true} value={id_buku} onChange={(e) => { setIdBuku(e.target.value) }} className="user-input" type="number" placeholder="ID-Buku" />
                         </div>
                         <div>
                             <input required={true} value={judul} onChange={(e) => { setJudul(e.target.value) }} className="user-input" type="text" placeholder="Judul Buku" />
@@ -64,7 +61,7 @@ const TambahBuku = (props) => {
                             <input required={true} value={penerbit} onChange={(e) => { setPenerbit(e.target.value) }} className="user-input" type="text" placeholder="Penerbit"></input>
                         </div>
                         <div>
-                            <input required={true} value={tahun_terbit } onChange={(e) => { setTahun(e.target.value) }} className="user-input" type="number" placeholder="Tahun Terbit"></input>
+                            <input required={true} value={tahun_terbit} onChange={(e) => { setTahun(e.target.value) }} className="user-input" type="number" placeholder="Tahun Terbit"></input>
                         </div>
                         <div>
                             <input required={true} value={sinopsis} onChange={(e) => { setSinopsis(e.target.value) }} className="user-input" type="text" placeholder="Sinopsis"></input>
@@ -73,7 +70,7 @@ const TambahBuku = (props) => {
                             <input required={true} value={cover} onChange={(e) => { setCover(e.target.value) }} className="user-input" type="text" placeholder="Cover"></input>
                         </div>
                         <div className="submit-button">
-                            <button onClick={(e) => { handleSubmit(e, id_buku, judul, penulis, penerbit, tahun_terbit, sinopsis, cover) }} className="submit-button">{ button }</button>
+                            <button onClick={(e) => { handleSubmit(e, id_buku, judul, penulis, penerbit, tahun_terbit, sinopsis, cover) }} className="submit-button">{button}</button>
                         </div>
                     </form>
                 </div>

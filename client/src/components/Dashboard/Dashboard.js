@@ -2,6 +2,7 @@ import Progress from "../Progress/Progress";
 import "./Dashboard.css";
 import { MdDashboard, MdLogout, MdBook } from "react-icons/md"
 import { FiSearch } from "react-icons/fi"
+import { AiFillHome } from "react-icons/ai"
 import DashboardBook from "../DashboardBook/DashboardBook";
 import { useEffect, useState, useRef } from "react";
 import axios from "axios";
@@ -53,10 +54,11 @@ const Dashboard = () => {
         <div className="dashboard">
             <div className="dashboard-left-section">
                 <div>
-                    <MdDashboard style={{ fontSize: "35px", cursor: "pointer" }} />
+                    <AiFillHome onClick={() => {navigate("/") }} className="dashboard-button"/>
+                    <MdDashboard className="dashboard-button"/>
                 </div>
                 <div>
-                    <MdLogout onClick={handleLogout} style={{ fontSize: "35px", cursor: "pointer" }} />
+                    <MdLogout className="dashboard-button" onClick={handleLogout} style={{ fontSize: "35px", cursor: "pointer" }} />
                 </div>
             </div>
             <div className="dashboard-mid-section">

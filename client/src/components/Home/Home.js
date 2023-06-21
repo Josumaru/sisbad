@@ -34,7 +34,7 @@ const Home = () => {
                     <div className="menu-grid">
                         <CgMenuGridR onClick={() => { navigate("/dashboard") } } style={{ fontSize: "34px" }} />
                     </div>
-                    <h6 style={{marginLeft:"110px"}}>
+                    <h6 style={{marginLeft:"65px"}}>
                         <div className="rt">
                             <div className="Reading">READING'S</div>
                             <div className="Time">TIME</div>
@@ -57,7 +57,7 @@ const Home = () => {
                 <div className="category">
                     <h3>Find More Category</h3>
                     <div className="category-book">
-                        <Category category={"🔖 See All"} color={"linear-gradient(43deg, #8895e3 0%, #6cc0f7 100%"} />
+                        <Category navigate={ "/pageview"} category={"🔖 See All"} color={"linear-gradient(43deg, #8895e3 0%, #6cc0f7 100%"} />
                         <Category category={"💌 Romance"} color={"linear-gradient(43deg, #fabced 0%, #adc8ff 100%"} />
                         <Category category={"📖 Comic"} color={"linear-gradient(43deg, #fd5ecb 0%, #fd83a2 100%"} />
                         <Category category={"📔 Novel"} color={"linear-gradient(43deg, rgba(251,173,126,1) 0%, rgba(249,203,105,1) 100%)"} />
