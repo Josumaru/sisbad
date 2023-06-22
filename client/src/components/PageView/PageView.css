@@ -1,0 +1,15 @@
+.view-bawah {
+    height: 100%;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(6,1fr);
+}
+
+
+.page-view {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin: 20px;
+    overflow: hidden;
+}

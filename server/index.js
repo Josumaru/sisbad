@@ -1,4 +1,4 @@
-import express, { query } from "express";
+import express from "express";
 import mysql from "mysql";
 import cors from "cors"
 import jwt from "jsonwebtoken"
@@ -113,7 +113,8 @@ server.get("/logout", (req, res) => {
 
 
 server.get("/showbook", (req, res) => {
-    const query = `SELECT * FROM buku`
+    const { sql } = req.query
+    const query = `SELECT * FROM buku ${sql}`
     connection.query(query, (err, result) => {
         res.json(result)
     })
@@ -179,4 +180,27 @@ server.get("/pageview", (req, res) => {
         res.send(result)
         // res.send({message: "success"})
     })
+})
+
+
+server.get("/query", (req, res) => {
+    const query = `SELECT * FROM buku WHERE judul like '%${req.query.find}%'`
+    console.log(query)
+    connection.query(query, (err, result) => {
+        res.json(result)
+    })
+})
+
+
+
+server.get("/sql", (req, res) => {
+    const  {query} = req.query
+    const sql = query
+    try {
+        connection.query(sql, (req, result) => {
+            res.json(result)
+        })
+    } catch (error) {
+        
+    }
 })

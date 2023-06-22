@@ -15,12 +15,21 @@ const Dashboard = () => {
     const [allBook, setAllBook] = useState([]);
     const [updateBook, setUpdateBook] = useState("")
     const [button, setButton] = useState("Add Book")
+    const [search, setSearch] =useState()
 
     const handleClick = (data) => {
         setUpdateBook(data)
         setButton("Update Book")
     }
 
+    useEffect(() => {
+        const fetchData = async () => {
+            const res = await axios.get(`http://localhost:3001/query?find=${search}`)
+            setAllBook(res.data)
+        }
+        fetchData();
+    }, [search])
+    
     useEffect(() => {
         axios.get("http://localhost:3001/showbook")
             .then((res) => {
@@ -52,7 +61,7 @@ const Dashboard = () => {
                     <h3>Dashboard</h3>
                     <div className="search-bar">
                         <button className="search-button"><FiSearch style={{ fontSize: "25px" }} /></button>
-                        <input type="search" placeholder="Looking for Book ?" className="search"></input>
+                        <input onChange={(e) =>{setSearch(e.target.value)}} type="search" placeholder="Looking for Book ?" className="search"></input>
                     </div>
                 </div>
                 <div className="dashboard-mid-section-bottom">

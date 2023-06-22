@@ -6,8 +6,8 @@ const Bukupage = (props) => {
             <div className="cover-book-home">
                 <img className="cover-image" src={ props.url }></img>
             </div>
-            <h6>{props.judul}</h6>
-            <p>{props.penulis}</p>
+            <h6 style={{textIndent: props.indent}}>{props.judul}</h6>
+            <p style={{textIndent: props.indent}}>{props.penulis}</p>
         </div>
     )
 }
