@@ -2,7 +2,7 @@ import "./Dashboard.css";
 import DashboardBook from "../DashboardBook/DashboardBook";
 import Progress from "../Progress/Progress";
 import axios from "axios";
-import { MdDashboard, MdLogout, MdBook } from "react-icons/md"
+import { MdDashboard, MdLogout } from "react-icons/md"
 import { FiSearch } from "react-icons/fi"
 import { AiFillHome } from "react-icons/ai"
 import { useEffect, useState, useRef } from "react";
@@ -17,9 +17,11 @@ const Dashboard = () => {
     const returnRef = useRef();
     const returnButton = useRef();
     const borrowButton = useRef();
-    const [borowBook, setBorrowBook] = useState([])
-    const [returnBook, setReturnBook] = useState([])
-    const [find, setFind] = useState('')
+    const [borowBook, setBorrowBook] = useState([]);
+    const [returnBook, setReturnBook] = useState([]);
+    const [find, setFind] = useState('');
+    const [jumlahPinjam, setJumlahPinjam] = useState();
+    const [jumlahKembali, setJumlahKembali] = useState();
 
 
     useEffect(() => {
@@ -68,6 +70,11 @@ const Dashboard = () => {
             const resp = await axios.post("http://localhost:3001/auth")
             const res = await axios.get(`http://localhost:3001/return?table=peminjaman&target=${resp.data.id_account}`);
             const respo = await axios.get(`http://localhost:3001/return?table=pengembalian&target=${resp.data.id_account}`);
+            const counter = await axios.get(`http://localhost:3001/counter?table=peminjaman&id_member=${resp.data.id_account}`)
+            const returnedBook = await axios.get(`http://localhost:3001/counter?table=pengembalian&id_member=${resp.data.id_account}`)
+            console.log(counter)
+            setJumlahPinjam(counter.data.count)
+            setJumlahKembali(returnedBook.data.count)
             setBorrowBook(res.data)
             setReturnBook(respo.data)
        
@@ -96,8 +103,8 @@ const Dashboard = () => {
                 </div>
                 <div className="dashboard-mid-section-mid">
                     <div className="book-progress">
-                        <Progress calc={"1/5"} status={"calc(1/5 * 100%)"} context={"Buku Dikembalikan"} color={"red"} rotate={"90deg"} />
-                        <Progress calc={"2/5"} status={"calc(2/5 * 100%)"} context={"Buku Dipinjam"} color={"green"} rotate={"-90deg"} />
+                        <Progress calc={`${jumlahPinjam}/5`} status={`calc(${jumlahPinjam}/5 * 100%)`} context={"Buku Dipinjam"} color={"green"} rotate={"-90deg"} />
+                        <Progress calc={`${jumlahKembali}`} status={`100%`} context={"Buku Dikembalikan"} color={"red"} rotate={"90deg"} />
 
                     </div>
                     <div className="book-navigation">

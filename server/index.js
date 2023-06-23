@@ -215,10 +215,18 @@ server.get("/category", (req, res) => {
 server.post("/peminjaman", (req, res) => {
     const { id_member, tanggal_pengembalian ,id_buku } = req.query;
     const sql = `INSERT INTO peminjaman(tanggal_pengembalian, id_buku, id_member) VALUES ('${tanggal_pengembalian}', ${id_buku}, ${id_member})`
+    const checker = `SELECT COUNT(id_buku) FROM peminjaman WHERE id_member=${id_member}`
     console.log(sql)
     try {
-        connection.query(sql, (error, result) => {
-            res.json(result)
+        connection.query(checker, (error, result) => {
+            const limit = (parseInt(Object.values(result[0])))
+            if (limit <= 5) {
+                connection.query(sql, (error, result) => {
+                    res.json(result)
+                })
+            } else {
+                res.send({message: "limit"})
+            }
         })
     } catch (error) {
         res.send(error)
@@ -228,7 +236,6 @@ server.post("/peminjaman", (req, res) => {
 server.get("/return", (req, res) => {
     const { table, target } = req.query
     const sql = `SELECT * FROM buku WHERE id_buku IN (SELECT id_buku FROM ${table} WHERE id_member = "${target}")`
-    console.log(sql)
     try {
         connection.query(sql, (error, result) => {
             res.json(result)
@@ -265,4 +272,18 @@ server.post("/history", (req, res) => {
     } catch (error) {
         res.send(err)
     }
+})
+
+server.get("/counter", (req, res) => {
+    const { table, id_member } = req.query;
+    const checker = `SELECT COUNT(id_buku) FROM ${table} WHERE id_member=${id_member}`
+    try {
+        connection.query(checker, (err, result) => {
+            const count = parseInt(Object.values(result[0]))
+            res.send({ count:  count})
+        })
+    } catch (error) {
+        
+    }
+
 })
