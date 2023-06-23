@@ -25,7 +25,7 @@ const DashboardBook = (props) => {
                     </div>
                 </div>
                 <div className="dashboard-book-section-left-right">
-                    <div className="book-count-down">3 days left</div>
+                    <div style={{display: props.display}} className="book-count-down">3 days left</div>
                     <div className="book-title">
                         <h4>{props.title}</h4>
                         <p>{props.author}</p>
@@ -36,7 +36,7 @@ const DashboardBook = (props) => {
                 </div>
             </div>
             <div className="dashboard-book-section-right">
-                <div onClick={handleReturn} className="return-button">Kembalikan</div>
+                <div style={{display: props.display}} onClick={handleReturn} className="return-button">Kembalikan</div>
             </div>
         </div>
     )

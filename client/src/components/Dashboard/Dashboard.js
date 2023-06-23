@@ -130,7 +130,7 @@ const Dashboard = () => {
                         {
                             returnBook.map((book, index) => {
                                 return (
-                                    <DashboardBook key={index} title={book.judul} author={book.penulis} cover={book.cover} sinopsis={ book.sinopsis} />
+                                    <DashboardBook display={ "none" } key={index} title={book.judul} author={book.penulis} cover={book.cover} sinopsis={ book.sinopsis} />
                                 )
                             })}
                     </div>

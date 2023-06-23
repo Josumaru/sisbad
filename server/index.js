@@ -30,7 +30,7 @@ connection.connect()
 
 server.post("/login", (req, res) => {
     const { email, password } = req.query;
-    const query = "SELECT * FROM account WHERE email = ? AND password = ?"
+    const query = "SELECT * FROM member WHERE email = ? AND password = ?"
     const values = [email, password];
     connection.query(query, values, (err, result) => {
         if (err) throw err;
@@ -51,11 +51,10 @@ server.post("/login", (req, res) => {
 
 server.post("/register", (req, res) => {
     const { name, id, email, password } = req.query;
-    const query = `INSERT INTO account(id_account, email, nama, password) values (${id},'${email}', '${name}', '${password}')`
-    const checker = `SELECT * FROM account WHERE id_account = ${id} OR email = '${email}'`
+    const query = `INSERT INTO member(id_account, email, nama, password) values (${id},'${email}', '${name}', '${password}')`
+    const checker = `SELECT * FROM member WHERE id_account = ${id} OR email = '${email}'`
     try {
         connection.query(checker, (err, result) => {
-            console.log(result)
             if (result.length === 0) {
                 connection.query(query, (err, result) => {
                     if (err) res.send("error");
@@ -79,9 +78,7 @@ server.post("/addbook", (req, res) => {
     try {
         connection.query(checker, (err, result) => {
             if (result.length === 0) {
-                console.log("Harus bisa")
                 connection.query(query, (err, result) => {
-                    console.log(result)
                     if (err) res.send("error");
                     res.send({ message: "success" });
                 })
@@ -130,7 +127,7 @@ server.post("/deletebook", (req, res) => {
     const query = `delete from buku where id_buku=${id_buku}`
     connection.query(query, (err, result) => {
         if (err) res.send("error");
-        res.send({message: "success"})
+        res.send({ message: "success" })
     })
 })
 
@@ -145,7 +142,6 @@ const userAuth = (req, res, next) => {
             if (err) {
                 return res.json({ login: false, message: "error authentication" })
             } else {
-                console.log(decoded)
                 req.email = decoded.email;
                 req.role = decoded.role;
                 req.nama = decoded.nama;
@@ -162,7 +158,7 @@ server.post("/auth", userAuth, (req, res) => {
         email: req.email,
         role: req.role,
         id_account: req.id_account,
-        nama:req.nama
+        nama: req.nama
     })
 })
 
@@ -170,7 +166,6 @@ server.get("/pageview", (req, res) => {
     const { id_buku } = req.query;
     const query = `SELECT * FROM buku WHERE id_buku like '${id_buku}%'`
     connection.query(query, (err, result) => {
-        console.log(result)
         if (err) res.send("error");
         res.send(result)
     })
@@ -187,7 +182,7 @@ server.get("/query", (req, res) => {
 
 
 server.get("/sql", (req, res) => {
-    const  {query} = req.query
+    const { query } = req.query
     const sql = query
     try {
         connection.query(sql, (req, result) => {
@@ -200,29 +195,38 @@ server.get("/sql", (req, res) => {
 
 server.get("/category", (req, res) => {
     const { query } = req.query
-    console.log(query)
     const sql = `SELECT* FROM buku WHERE id_buku like "${query}%"`
     try {
         connection.query(sql, (error, result) => {
             res.json(result)
         })
     } catch (error) {
-        
+
     }
 
 })
 
 server.post("/peminjaman", (req, res) => {
-    const { id_member, tanggal_pengembalian ,id_buku } = req.query;
+    const { id_member, tanggal_pengembalian, id_buku } = req.query;
     const sql = `INSERT INTO peminjaman(tanggal_pengembalian, id_buku, id_member) VALUES ('${tanggal_pengembalian}', ${id_buku}, ${id_member})`
     const checker = `SELECT COUNT(id_buku) FROM peminjaman WHERE id_member=${id_member}`
-    console.log(sql)
+    const validator = `select id_buku from buku where id_buku in (select id_buku from peminjaman);`
     try {
         connection.query(checker, (error, result) => {
             const limit = (parseInt(Object.values(result[0])))
-            if (limit <= 5) {
-                connection.query(sql, (error, result) => {
-                    res.json(result)
+            if (limit < 5) {
+                connection.query(validator, (error, result) => {
+                    let book = []
+                    for (let x = 0; x < result.length; x++) {
+                        book.push(result[x].id_buku)
+                    }
+                    if (book.includes(parseInt(id_buku))) {
+                        res.send({ message: "borrowed" })
+                    } else {
+                        connection.query(sql, (err, result) => {
+                            res.json(result)
+                        })
+                    }
                 })
             } else {
                 res.send({message: "limit"})
@@ -241,7 +245,7 @@ server.get("/return", (req, res) => {
             res.json(result)
         })
     } catch (error) {
-        
+
     }
 
 })
@@ -250,10 +254,9 @@ server.get("/return", (req, res) => {
 server.post("/borrow", (req, res) => {
     const { id_buku } = req.query;
     const sql = `DELETE FROM peminjaman WHERE id_buku = ${id_buku}`
-    console.log(sql)
     try {
         connection.query(sql, (err, result) => {
-            res.send({message: "success"})
+            res.send({ message: "success" })
         })
     } catch (error) {
         res.send(error)
@@ -264,7 +267,6 @@ server.post("/borrow", (req, res) => {
 server.post("/history", (req, res) => {
     const { id_buku, id_member } = req.query;
     const sql = `INSERT INTO pengembalian(id_buku, id_member) VALUES (${id_buku}, ${id_member})`
-    console.log(sql)
     try {
         connection.query(sql, (err, result) => {
             res.send(result)
@@ -281,14 +283,14 @@ server.get("/counter", (req, res) => {
         connection.query(checker, (err, result) => {
             try {
                 const count = parseInt(Object.values(result[0]))
-                res.send({ count:  count})
-                
+                res.send({ count: count })
+
             } catch (error) {
                 res.send(error)
             }
         })
     } catch (error) {
-        
+
     }
 
 })

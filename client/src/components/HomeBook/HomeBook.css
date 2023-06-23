@@ -47,4 +47,33 @@
 .option:hover {
     background-color: red;
 }
+.limiter {
+    background-color: var(--main-color);
+    width: 200px;
+    height: 70px;
+    position: absolute;
+    top: 0;
+    justify-content: center;
+    display: none;
+}
+
+.borrowed {
+    background-color: rgb(43, 245, 3);
+    width: 200px;
+    height: 70px;
+    position: absolute;
+    top: 0;
+    justify-content: center;
+    display: none;
+}
+
+.edisi-males {
+    background-color: rgb(229, 245, 3);
+    width: 200px;
+    height: 70px;
+    position: absolute;
+    top: 0;
+    justify-content: center;
+    display: none;
+}
 
