@@ -11,5 +11,15 @@
     justify-content: center;
     flex-direction: column;
     margin: 20px;
-    overflow: hidden;
+    overflow: auto;
+}
+
+.view-atas {
+    display: flex;
+    align-items: center;
+    height: 60px;
+}
+.view-atas p {
+    text-indent: 40px;
+    position: fixed;
 }

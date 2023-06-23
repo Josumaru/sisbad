@@ -91,10 +91,6 @@
 
 }
 
-.Buku div {
-    margin: 10px;
-}
-
 .category {
     text-indent: 20px;
     background-color: whitesmoke;
@@ -174,7 +170,20 @@
 
 .search-result {
     background-color: var(--background-color);
-    height: 300px;
     border-radius: 10px;
-    
+    height: 300px;
+    width: 300px;
+    overflow: auto;
+    position: relative;
+    margin-top: 10px;
+    z-index: 1;
+    transition: all .2s ease-in-out;
 }
+
+.search-result::-webkit-scrollbar {
+    display: none;
+}
+.search-result-down {
+    height: 0px;
+}
+

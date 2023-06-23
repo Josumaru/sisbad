@@ -8,10 +8,12 @@ const DashboardPage = () => {
     let [admin, setAdmin] = useState('');
     const navigate = useNavigate()
     axios.defaults.withCredentials = true;
+    const [idAccount, setIdAccount] = useState();
     
     useEffect(() => {
         axios.post("http://localhost:3001/auth")
-        .then((res) => {
+            .then((res) => {
+                setIdAccount(res.data.id_account)
                 if (res.data.role === "admin") {
                     setAdmin(true)
                 } else {
@@ -27,7 +29,7 @@ const DashboardPage = () => {
 
     return (
         <div>
-            {admin ? <DashboardAdmin /> : <Dashboard /> }
+            {admin ? <DashboardAdmin /> : <Dashboard id_account={ idAccount } /> }
         </div>
     )
     

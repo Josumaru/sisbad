@@ -6,14 +6,26 @@ import { CgMenuGridR } from "react-icons/cg"
 import { AiOutlineUserAdd } from "react-icons/ai"
 import Category from "../Category/Category"
 import HomeBook from "../HomeBook/HomeBook"
-import { useEffect, useState } from "react"
+import { useEffect, useState, useRef } from "react"
 import axios from "axios"
+import SearchResult from "../SearchResult/SearchResult"
 
 const Home = () => {
     const navigate = useNavigate();
     const [book, setBook] = useState([])
     const [isBook, setIsBook] = useState([])
     const [allBook, setAllBook] = useState([])
+    const [isSearch, setIsSearch] = useState(true)
+    const searchReff = useRef();
+
+    useEffect(() => {
+        if (isSearch) {
+            searchReff.current.classList.add("search-result-down")
+        } else {
+            searchReff.current.classList.remove("search-result-down")
+        }
+    }, [isSearch])
+    
     useEffect(() => {
         findBook();
     }, [book])
@@ -51,7 +63,7 @@ const Home = () => {
                             <p style={{ marginTop: "0", marginBottom: "70px" }} >Buku adalah jendela dunia</p>
                         </div>
                         <div className="Search" >
-                            <div className="search-bar-home">
+                            <div onClick={() => {setIsSearch(!isSearch); }} className="search-bar-home">
                                 <div className="search-bar-home-page">
                                     <input onChange={(e) => { setBook(e.target.value) }} type="search-home" placeholder="Search book,Stories,Article,and more" className="search"></input>
                                 </div>
@@ -59,11 +71,11 @@ const Home = () => {
                                     <button className="search-button-home" ><FiSearch style={{ fontSize: "25px" }} /></button>
                                 </div>
                             </div>
-                            <div className="search-result">
+                            <div ref={searchReff} className="search-result">
                                 {
                                     isBook.map((buku, index) => {
                                         return (
-                                            <p key={index}>{buku.judul}</p>
+                                            <SearchResult key={ index} cover={buku.cover} judul={buku.judul } />
                                         )
                                     })
                                 }
@@ -93,30 +105,20 @@ const Home = () => {
                             allBook.map((buku, index) => {
 
                                 return (
-                                    <HomeBook key={index} indent={"13px"} penulis={buku.penulis} judul={buku.judul} url={buku.cover} />
+                                    <HomeBook key={index} id_buku={ buku.id_buku} indent={"13px"} penulis={buku.penulis} judul={buku.judul} url={buku.cover} />
                                 )
                             })
                         }
-
                     </div>
                 </div>
                 <div className="kotak-kosong"></div>
                 <div className="category">
                     <h3>Find More Category</h3>
                     <div className="category-book">
-                        <Category query={"hello"} navigate={"/pageview"} category={"🔖 See All"} color={"linear-gradient(43deg, #8895e3 0%, #6cc0f7 100%"} />
-                        <Category query={"romance"} category={"💌 Romance"} color={"linear-gradient(43deg, #fabced 0%, #adc8ff 100%"} />
-                        <Category category={"📖 Comic"} color={"linear-gradient(43deg, #fd5ecb 0%, #fd83a2 100%"} />
-                        <Category category={"📔 Novel"} color={"linear-gradient(43deg, rgba(251,173,126,1) 0%, rgba(249,203,105,1) 100%)"} />
-                    </div>
-                </div>
-                <div className="category">
-                    <h3>Find More Category</h3>
-                    <div className="category-book">
-                        <Category category={"📖 Comic"} color={"linear-gradient(43deg, #8895e3 0%, #6cc0f7 100%"} />
-                        <Category category={"💌 Romance"} color={"linear-gradient(43deg, #fabced 0%, #adc8ff 100%"} />
-                        <Category category={"💻 Informatics"} color={"linear-gradient(43deg, #fd5ecb 0%, #fd83a2 100%"} />
-                        <Category category={"📔 Novel"} color={"linear-gradient(43deg, rgba(251,173,126,1) 0%, rgba(249,203,105,1) 100%)"} />
+                        <Category id_buku={ "%" } category={"🔖 See All"} color={"linear-gradient(43deg, #8895e3 0%, #6cc0f7 100%"} />
+                        <Category id_buku={ 1 } category={"📔 Novel"} color={"linear-gradient(43deg, rgba(251,173,126,1) 0%, rgba(249,203,105,1) 100%)"} />
+                        <Category id_buku={ 2 } category={"📖 Comic"} color={"linear-gradient(43deg, #fd5ecb 0%, #fd83a2 100%"} />
+                        <Category id_buku={ 3 } category={"💌 Romance"} color={"linear-gradient(43deg, #fabced 0%, #adc8ff 100%"} />
                     </div>
                 </div>
             </div>

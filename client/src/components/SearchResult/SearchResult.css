@@ -1,0 +1,25 @@
+.search-bar-components {
+    background-color: rgba(172, 172, 172, 0.144);
+    display: grid;
+    grid-template-columns:repeat(2, 1fr);
+    align-items: center;
+    margin: 10px;
+    padding: 10px;
+    border-radius: 4px;
+    cursor: pointer;
+
+}
+
+.search-bar-components:hover {
+    background-color: rgba(172, 172, 172, 0.432);
+}
+.search-bar-components div{
+    width: 60px;
+    height: 80px;
+    margin-bottom: 20px;
+    margin-top: 10px;
+}
+.search-bar-components div img {
+    border-radius: 4px;
+    width: 100%;
+}
