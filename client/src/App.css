@@ -7,9 +7,9 @@
 :root {
     --main-color:#f37674;
     --second-color: #ffb1a5;
-    --light-color: #ffdcd7;
+    --light-color: rgba(241,241,241,255);
     --text-color: #fff5f3;
-    --background-color: #ffffff;
+    --background-color: rgba(255,255,255,255);
 }
 
 
