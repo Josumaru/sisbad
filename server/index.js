@@ -279,8 +279,13 @@ server.get("/counter", (req, res) => {
     const checker = `SELECT COUNT(id_buku) FROM ${table} WHERE id_member=${id_member}`
     try {
         connection.query(checker, (err, result) => {
-            const count = parseInt(Object.values(result[0]))
-            res.send({ count:  count})
+            try {
+                const count = parseInt(Object.values(result[0]))
+                res.send({ count:  count})
+                
+            } catch (error) {
+                res.send(error)
+            }
         })
     } catch (error) {
         

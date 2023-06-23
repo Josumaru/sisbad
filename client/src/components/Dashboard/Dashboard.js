@@ -7,6 +7,7 @@ import { FiSearch } from "react-icons/fi"
 import { AiFillHome } from "react-icons/ai"
 import { useEffect, useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
+import card from "../../asset/kartu.png"
 
 const Dashboard = () => {
     const navigate = useNavigate()
@@ -22,6 +23,8 @@ const Dashboard = () => {
     const [find, setFind] = useState('');
     const [jumlahPinjam, setJumlahPinjam] = useState();
     const [jumlahKembali, setJumlahKembali] = useState();
+    const [id, setId] = useState();
+    const [name, setName] = useState();
 
 
     useEffect(() => {
@@ -77,6 +80,8 @@ const Dashboard = () => {
             setJumlahKembali(returnedBook.data.count)
             setBorrowBook(res.data)
             setReturnBook(respo.data)
+            setName(resp.data.nama)
+            setId(resp.data.id_account)
        
         }
         fetchData()
@@ -132,7 +137,11 @@ const Dashboard = () => {
                 </div>
             </div>
             <div className="dashboard-right-section">
-                <p>Hello, World!</p>
+                <div className="card">
+                    <p className="id-account">{id}</p>
+                    <p className="name-account">{ name}</p>
+                    <img src={ card }></img>
+                </div>
             </div>
         </div>
     )

@@ -135,3 +135,31 @@
     display: flex;
     width: 100%;
 }
+
+.card {
+    position: relative;
+}
+.card img{
+    width:100%;
+    border-radius: 10px;
+}
+
+.card p {
+    position: absolute;
+}
+.id-account {
+    top: 57%;
+    left: 45%;
+    color: aliceblue;
+    font-weight: 1000;
+    font-size: 30px;
+
+}
+
+.name-account {
+    top: 28%;
+    left: 35%;
+    color:#7a8fd2;
+    font-weight: 1000;
+    font-size: 30px;
+}
