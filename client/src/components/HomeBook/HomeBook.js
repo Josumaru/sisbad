@@ -46,12 +46,12 @@ const Bukupage = (props) => {
                     Limit
                 </p>
             </div>
-            <div ref={notAvalaible} className="borrowed">
+            <div ref={notAvalaible} className="edisi-males">
                 <p>
                     Not Available
                 </p>
             </div>
-            <div ref={borowRef} className="edisi-males">
+            <div ref={borowRef} className="borrowed">
                 <p>
                     Borrowed
                 </p>

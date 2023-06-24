@@ -22,7 +22,7 @@ const Category = (props) => {
             </h5>
             <div ref={panelRef} className="page-view-home">
                 <IoIosArrowBack className="back-button" onClick={() => { hidePanel() }} />
-                <PageView id_buku={ props.id_buku } category={props.category} query={props.query} />
+                <PageView key={props.id_buku } id_buku={ props.id_buku } category={props.category} query={props.query} />
             </div>
         </div>
     )

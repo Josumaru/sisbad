@@ -2,7 +2,9 @@
     height: 100%;
     width: 100%;
     display: grid;
-    grid-template-columns: repeat(6,1fr);
+    grid-template-columns: repeat(6, 1fr);
+    align-items: center;
+    justify-items: center;
 }
 
 .page-view {
@@ -12,11 +14,17 @@
     margin: 20px;
     overflow: auto;
 }
+
+.page-view::-webkit-scrollbar {
+    display: none;
+}
+
 .view-atas {
     display: flex;
     align-items: center;
     height: 60px;
 }
+
 .view-atas p {
     text-indent: 40px;
     position: fixed;
@@ -24,4 +32,25 @@
 
 .page-view::-webkit-scrollbar {
     display: none;
+}
+
+@media screen and (min-width:400px) {
+    .view-bawah {
+        grid-template-columns: repeat(2, 1fr);
+
+    }
+}
+
+@media screen and (min-width:1000px) {
+    .view-bawah {
+        grid-template-columns: repeat(4, 1fr);
+
+    }
+}
+
+@media screen and (min-width:1400px) {
+    .view-bawah {
+        grid-template-columns: repeat(6, 1fr);
+
+    }
 }

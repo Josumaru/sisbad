@@ -1,28 +1,27 @@
 import HomeBook from "../HomeBook/HomeBook"
 import "./PageView.css"
-import { useEffect, useRef, useState } from "react"
+import {  useState } from "react"
 import axios from "axios"
 
 const PageView = (props) => {
     const [book, setBook] = useState([])
 
     const SeeAllBook = async () => {
-        console.log(props)
         const res = await axios.get(`http://localhost:3001/category?query=${props.id_buku}`);
         setBook(res.data)
     }
-    useEffect(() => {
-        SeeAllBook()
-    }, []);
+    SeeAllBook()
+    // useEffect(() => {
+    // }, []);
     return (
         <div className="page-view" >
             <div className="view-atas">
                 <p>{ props.category}</p>
             </div>
             <div className="view-bawah">
-                {book.map((book) => {
+                {book.map((book, index) => {
                     return (
-                        <HomeBook id_buku={ book.id_buku} url={book.cover} judul={book.judul} penulis={book.penulis} sinopsis={book.sinopsis} />
+                        <HomeBook key={ index} id_buku={ book.id_buku} url={book.cover} judul={book.judul} penulis={book.penulis} sinopsis={book.sinopsis} />
                     )
                 })}
             </div>

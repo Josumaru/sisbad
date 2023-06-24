@@ -214,13 +214,17 @@ server.post("/peminjaman", (req, res) => {
     try {
         connection.query(checker, (error, result) => {
             const limit = (parseInt(Object.values(result[0])))
+            let role;
+            jwt.verify(req.cookies.token, "secret", (err, decoded) => {
+                role = decoded.role
+            })
             if (limit < 5) {
                 connection.query(validator, (error, result) => {
                     let book = []
                     for (let x = 0; x < result.length; x++) {
                         book.push(result[x].id_buku)
                     }
-                    if (book.includes(parseInt(id_buku))) {
+                    if (book.includes(parseInt(id_buku)) || role == "admin") {
                         res.send({ message: "borrowed" })
                     } else {
                         connection.query(sql, (err, result) => {
@@ -284,7 +288,6 @@ server.get("/counter", (req, res) => {
             try {
                 const count = parseInt(Object.values(result[0]))
                 res.send({ count: count })
-
             } catch (error) {
                 res.send(error)
             }
