@@ -10,12 +10,13 @@ import { useEffect, useState, useRef } from "react"
 import axios from "axios"
 import SearchResult from "../SearchResult/SearchResult"
 
-const Home = () => {
+const Home = (props) => {
     const navigate = useNavigate();
     const [book, setBook] = useState([])
     const [isBook, setIsBook] = useState([])
     const [allBook, setAllBook] = useState([])
     const [isSearch, setIsSearch] = useState(true)
+    const [users, setUsers] = useState("Sign In")
     const searchReff = useRef();
 
     useEffect(() => {
@@ -87,7 +88,7 @@ const Home = () => {
                         <div className="menu-grid">
                             <CgMenuGridR onClick={() => { navigate("/dashboard") }} style={{ fontSize: "34px" }} />
                         </div>
-                        <h6 style={{ marginLeft: "65px" }}>
+                        <h6 style={{ marginLeft: "175px" }}>
                             <div className="rt">
                                 <div className="Reading">READING'S</div>
                                 <div className="Time">TIME</div>
@@ -95,7 +96,7 @@ const Home = () => {
                         </h6>
                         <div className="SignIn">
                             <AiOutlineUserAdd className="SignInAi" />
-                            <button className="SignInButton" onClick={() => { navigate("/login") }}>Sign In</button>
+                            <button className="SignInButton" onClick={() => { navigate("/login") }}>{ props.user }</button>
                         </div>
                     </div>
                 </div>
@@ -105,7 +106,7 @@ const Home = () => {
                             allBook.map((buku, index) => {
 
                                 return (
-                                    <HomeBook key={index} id_buku={ buku.id_buku} indent={"13px"} penulis={buku.penulis} judul={buku.judul} url={buku.cover} />
+                                    <HomeBook key={index} id_buku={ buku.id_buku} penulis={buku.penulis} judul={buku.judul} url={buku.cover} />
                                 )
                             })
                         }
@@ -118,7 +119,7 @@ const Home = () => {
                         <Category key={1 } id_buku={ "%" } category={"🔖 See All"} color={"linear-gradient(43deg, #8895e3 0%, #6cc0f7 100%"} />
                         <Category key={2 } id_buku={ 1 } category={"📔 Novel"} color={"linear-gradient(43deg, rgba(251,173,126,1) 0%, rgba(249,203,105,1) 100%)"} />
                         <Category key={3 } id_buku={ 2 } category={"📖 Comic"} color={"linear-gradient(43deg, #fd5ecb 0%, #fd83a2 100%"} />
-                        <Category key={4 } id_buku={ 3 } category={"💌 Romance"} color={"linear-gradient(43deg, #fabced 0%, #adc8ff 100%"} />
+                        <Category key={4 } id_buku={ 3 } category={"💌 Leadership"} color={"linear-gradient(43deg, #fabced 0%, #adc8ff 100%"} />
                     </div>
                 </div>
             </div>

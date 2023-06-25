@@ -46,7 +46,6 @@ server.post("/login", (req, res) => {
             })
         }
     })
-
 })
 
 server.post("/register", (req, res) => {
