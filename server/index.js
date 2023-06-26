@@ -35,6 +35,7 @@ server.post("/login", (req, res) => {
     connection.query(query, values, (err, result) => {
         if (err) throw err;
         if (result.length > 0) {
+            console.log(result)
             const email = result[0].email
             const role = result[0].role
             const nama = result[0].nama

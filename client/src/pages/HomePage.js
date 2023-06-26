@@ -12,7 +12,6 @@ const HomePage = () => {
     useEffect(() => {
         axios.post("http://localhost:3001/auth")
             .then((res) => {
-                console.log(res)
                 setLogin(res.data.login)
                 setUsers(res.data.email)
                 if (!res.data.login) return navigate("/login");

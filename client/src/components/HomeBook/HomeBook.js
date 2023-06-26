@@ -8,7 +8,6 @@ const Bukupage = (props) => {
     const borowRef = useRef()
     const notAvalaible = useRef()
     const [isOption, setIsOption] = useState(false);
-    const [idMember, setIdMember] = useState()
 
     const handleOption = () => {
         setIsOption(!isOption)
@@ -23,8 +22,9 @@ const Bukupage = (props) => {
     }, [isOption])
     const date = new Date()
     date.setDate(date.getDate() + 3)
-    const timeStamp = `${date.getFullYear()}-${date.getUTCMonth()}-${date.getDay()}`
+    const timeStamp = `${date.getFullYear()}-${date.getMonth()}-${date.getDate()}`
     const handleChoose = () => {
+        console.log(timeStamp)
         const userAuth = async () => {
             const res = await axios.post("http://localhost:3001/auth")
             const resp = await axios.post(`http://localhost:3001/peminjaman?id_buku=${props.id_buku}&tanggal_pengembalian=${timeStamp}&id_member=${res.data.id_account}`)

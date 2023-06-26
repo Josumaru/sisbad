@@ -29,12 +29,13 @@ const Home = (props) => {
     
     useEffect(() => {
         findBook();
+        
     }, [book])
     const findBook = async () => {
         const res = await axios.get(`http://localhost:3001/query?find=${book}`)
         setIsBook(res.data)
     }
-
+    
     useEffect(() => {
         async function fetchData() {
             const resp = await axios.get(`http://localhost:3001/showbook?sql=`)
@@ -42,9 +43,9 @@ const Home = (props) => {
             setAllBook(randomBook)
         }
         fetchData()
-
+        
     }, [])
-
+    
     const shuffleBook = (array) => {
         for (let i = array.length - 1; i > 0; i--) {
             const j = Math.floor(Math.random() * (i + 1));

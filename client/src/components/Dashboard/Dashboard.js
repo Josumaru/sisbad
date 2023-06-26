@@ -25,6 +25,7 @@ const Dashboard = () => {
     const [jumlahKembali, setJumlahKembali] = useState();
     const [id, setId] = useState();
     const [name, setName] = useState();
+    const [date, setDate] = useState()
 
 
     useEffect(() => {
@@ -78,6 +79,7 @@ const Dashboard = () => {
             console.log(counter)
             setJumlahPinjam(counter.data.count)
             setJumlahKembali(returnedBook.data.count)
+            console.log(returnBook)
             setBorrowBook(res.data)
             setReturnBook(respo.data)
             setName(resp.data.nama)
@@ -121,8 +123,9 @@ const Dashboard = () => {
                     <div ref={borrowRef} className="book-history">
                         {
                             borowBook.map((book, index) => {
+                                console.log(book)
                                 return (
-                                    <DashboardBook key={index} id_buku={ book.id_buku} title={book.judul} author={book.penulis} cover={book.cover} sinopsis={ book.sinopsis} />
+                                    <DashboardBook key={index} date={ date } id_buku={ book.id_buku} title={book.judul} author={book.penulis} cover={book.cover} sinopsis={ book.sinopsis} />
                                     )
                                 })}
                     </div>
