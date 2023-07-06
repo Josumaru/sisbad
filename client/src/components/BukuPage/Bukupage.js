@@ -11,6 +11,7 @@ const Bukupage = (props) => {
         const res = await axios.post(`http://localhost:3001/deletebook?id_buku=${props.id_buku}`)
         console.log(res)
         if (res.data.message === "success") {
+            alert("Book Successfully Deleted")
             window.location.reload()
         }
     }
@@ -18,7 +19,7 @@ const Bukupage = (props) => {
         <div className="book-div" >
             <div className="buku-page">
                 <div className="cover-book-home-page">
-                    <img className="cover-image-page" src={props.cover}></img>
+                    <img alt="Book" className="cover-image-page" src={props.cover}></img>
                 </div>
             </div>
             <div className="desc">

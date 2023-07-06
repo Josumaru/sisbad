@@ -25,7 +25,6 @@ const Dashboard = () => {
     const [jumlahKembali, setJumlahKembali] = useState();
     const [id, setId] = useState();
     const [name, setName] = useState();
-    const [date, setDate] = useState()
 
 
     useEffect(() => {
@@ -125,7 +124,7 @@ const Dashboard = () => {
                             borowBook.map((book, index) => {
                                 console.log(book)
                                 return (
-                                    <DashboardBook key={index} date={ date } id_buku={ book.id_buku} title={book.judul} author={book.penulis} cover={book.cover} sinopsis={ book.sinopsis} />
+                                    <DashboardBook key={index} id_buku={ book.id_buku} title={book.judul} author={book.penulis} cover={book.cover} sinopsis={ book.sinopsis} />
                                     )
                                 })}
                     </div>
@@ -143,7 +142,7 @@ const Dashboard = () => {
                 <div className="card">
                     <p className="id-account">{id}</p>
                     <p className="name-account">{ name}</p>
-                    <img src={ card }></img>
+                    <img alt="card" src={ card }></img>
                 </div>
             </div>
         </div>

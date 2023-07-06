@@ -18,11 +18,13 @@ const TambahBuku = (props) => {
         if (button === "Add Book") {
             const res = await axios.post(`http://localhost:3001/addbook?id_buku=${id_buku}&judul=${judul}&penulis=${penulis}&penerbit=${penerbit}&tahun_terbit=${tahun_terbit}&sinopsis=${sinopsis}&cover=${cover}`)
             if (res.data.message === "success") {
+                alert("Successfully Added")
                 window.location.reload()
             }
         } else {
             const res = await axios.post(`http://localhost:3001/updatebook?id_buku=${id_buku}&judul=${judul}&penulis=${penulis}&penerbit=${penerbit}&tahun_terbit=${tahun_terbit}&sinopsis=${sinopsis}&cover=${cover}`)
             if (res.data.message === "success") {
+                alert("Successfully Updated")
                 window.location.reload()
             }
         }

@@ -16,7 +16,7 @@ const Register = () => {
         if (password === verifyPassword) {
             let nid = id.replace(/e/gi, '');
             console.log(nid)
-            if (nid == undefined || nid == '') return statusReff.current.innerHTML = `ID can be ${id}`; statusReff.current.style.color = "red";
+            if (nid === undefined || nid === '') return statusReff.current.innerHTML = `ID can be ${id}`; statusReff.current.style.color = "red";
             const res = await axios.post(`http://localhost:3001/register?name=${name}&id=${nid}&email=${email}&password=${password}`)
             if (res.data.message === "success") {
                 navigate("/login");
@@ -33,7 +33,7 @@ const Register = () => {
         <div className="login-page">
             <div className="login-section">
                 <div className="login-section-right">
-                    <img src={logo}></img>
+                    <img alt="logo" src={logo}></img>
                 </div>
                 <div className="login-section-left">
                     <h1 style={{ fontSize: "30px" }} ref={statusReff}>Nothing last Forever!</h1>

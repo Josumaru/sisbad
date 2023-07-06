@@ -1,5 +1,5 @@
 import "./Login.css"
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import logo from "../../asset/login-image.svg"
 import axios from "axios"
@@ -22,7 +22,7 @@ const Login = () => {
         <div className="login-page">
             <div className="login-section">
                 <div className="login-section-right">
-                    <img src={logo}></img>
+                    <img alt="logo" src={logo}></img>
                 </div>
                 <div className="login-section-left">
                     <h1>Get's Started.</h1>

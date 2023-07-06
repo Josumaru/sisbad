@@ -11,6 +11,7 @@ const DashboardBook = (props) => {
             const res = await axios.post(`http://localhost:3001/borrow?id_buku=${props.id_buku}`)
             console.log(res)
             if (res.data.message === "success") {
+                alert("Buku berhasil dikembalikan")
                 window.location.reload();
             }
         }
@@ -21,7 +22,7 @@ const DashboardBook = (props) => {
             <div className="dashboard-book-section-left">
                 <div className="dashboard-book-section-left-left">
                     <div className="cover">
-                        <img src={ props.cover}></img>
+                        <img alt="cover" src={ props.cover}></img>
                     </div>
                 </div>
                 <div className="dashboard-book-section-left-right">
